@@ -1,7 +1,7 @@
 (library
  (public_name spi)
  (name spi)
- (libraries core core_unix core_unix.iobuf_unix)
+ (libraries core core_unix core_kernel.iobuf)
  (foreign_stubs
    (language c)
    (names spi_stubs)
