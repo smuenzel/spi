@@ -1,5 +1,11 @@
 (library
  (public_name spi)
  (name spi)
+ (libraries core core_unix core_unix.iobuf_unix)
+ (foreign_stubs
+   (language c)
+   (names spi_stubs)
+   (include_dirs (lib core_unix.iobuf_unix))
+   )
  (preprocess
   (pps ppx_jane)))
