@@ -96,9 +96,12 @@ module Spi_ioc_transfer = struct
 
 end
 
-external spi_transfer
+external spi_transfer_stub
   :  File_descr.t
   -> Spi_ioc_transfer.Raw.t array
   -> int
   = "spi_transfer_stub"
 
+
+let transfer fd transfers =
+  spi_transfer_stub fd (Array.map transfers ~f:Spi_ioc_transfer.Raw.create)
