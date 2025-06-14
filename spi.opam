@@ -4,14 +4,17 @@ synopsis: "A short synopsis"
 description: "A longer description"
 maintainer: ["Maintainer Name <maintainer@example.com>"]
 authors: ["Author Name <author@example.com>"]
-license: "LICENSE"
-tags: ["add topics" "to describe" "your" "project"]
-homepage: "https://github.com/username/reponame"
-doc: "https://url/to/documentation"
-bug-reports: "https://github.com/username/reponame/issues"
+license: "MPL-2.0"
+tags: ["spi"]
+homepage: "https://github.com/smuenzel/spi"
+bug-reports: "https://github.com/smuenzel/spi/issues"
 depends: [
   "dune" {>= "3.17"}
   "ocaml"
+  "core"
+  "core_kernel"
+  "core_unix"
+  "ppx_jane"
   "odoc" {with-doc}
 ]
 build: [
@@ -28,4 +31,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/username/reponame.git"
+dev-repo: "git+https://github.com/smuenzel/spi.git"
