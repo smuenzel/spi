@@ -7,7 +7,7 @@ module Nbits = struct
     | Dual
     | Quad
     | Octal
-  [@@deriving compare, equal, sexp_of]
+  [@@deriving compare, equal, sexp]
 
   let to_value = function
     | Single -> 0x01
@@ -54,6 +54,8 @@ module Spi_ioc_transfer = struct
 
   module Raw = struct
     type t' = t
+
+    [@@@ocaml.warning "-69"]
 
     type t =
       { tx_buf: (read, Iobuf.no_seek) Iobuf.Hexdump.t option
@@ -104,4 +106,7 @@ external spi_transfer_stub
 
 
 let transfer fd transfers =
-  spi_transfer_stub fd (Array.map transfers ~f:Spi_ioc_transfer.Raw.create)
+  let return =
+    spi_transfer_stub fd (Array.map transfers ~f:Spi_ioc_transfer.Raw.create)
+  in
+  assert (return = 0)
